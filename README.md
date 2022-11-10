@@ -102,17 +102,17 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 
 根据系统提示安装apk文件，安装完成后打开软件点击主界面左上角“三横杠”打开软件设置：
 
-锁定Wi-Fi （勾选）
+	锁定Wi-Fi （勾选）
 
-CPU唤醒   （勾选）
+	CPU唤醒   （勾选）
 
-开机自启动（勾选）
+	开机自启动（勾选）
 
-语言      （简体中文）
+	语言      （简体中文）
 
-启动延迟  （5）  （以秒为单位，根据需要设置，想迟一点启动就将数字调大）
+	启动延迟  （5）  （以秒为单位，根据需要设置，想迟一点启动就将数字调大）
 
-联网更新  （勾选）
+	联网更新  （勾选）
 
 其他选项保持默认！！！！！！！！！！
 
@@ -123,41 +123,41 @@ CPU唤醒   （勾选）
 
 设置好后回到主界面，点击右下角“三横杠滑动开关”打开linux系统安装配置。
 
-发行版 （Debian）
+	发行版 （Debian）
 
-架构（armhf）（自行查询自己手机处理器型号，如果支持64位就选arm64）
+	架构（armhf）（自行查询自己手机处理器型号，如果支持64位就选arm64）
 
-发行版本 （stable）
+	发行版本 （stable）
 
-源地址 （ http://ftp.cn.debian.org/debian/ ）（国内源安装更快）
+	源地址 （ http://ftp.cn.debian.org/debian/ ）（国内源安装更快）
 
-安装类型 （目录）
+	安装类型 （目录）
 
-安装路径 （/data/debian11）
+	安装路径 （/data/debian11）
 
-用户名 （print3D）（因为涉及到klipper配置文件的路径，所以建议就用这个用户名）
+	用户名 （print3D）（因为涉及到klipper配置文件的路径，所以建议就用这个用户名）
 
-密码：（123456）（随便设置，能记住就行）
+	密码：（123456）（随便设置，能记住就行）
 
-本地化 （zh-CN.UTF-8）（系统汉化，便于使用）
+	本地化 （zh-CN.UTF-8）（系统汉化，便于使用）
 
-初始化 （启用）
+	初始化 （启用）
 
-初始化系统 （sysV）
+	初始化系统 （sysV）
 
-挂载点 （可选，此应用场景下一般用不到）
+	挂载点 （可选，此应用场景下一般用不到）
 
-挂载点列表 （/sdcard/-/mnt/sdcard/）（可选，此应用场景下一般用不到）
+	挂载点列表 （/sdcard/-/mnt/sdcard/）（可选，此应用场景下一般用不到）
 
-SSH （启用）（必须开启，否则连不上linux系统）
+	SSH （启用）（必须开启，否则连不上linux系统）
 
-图形界面 （启用）
+	图形界面 （启用）
 
-图形子系统 （X11）
+	图形子系统 （X11）
 
-图形界面设置 （取消勾选自动打开XServer-XSDL）（一键配置脚本里已经配置自动开启XServer-XSDL客户端，此处不需要勾选）
+	图形界面设置 （取消勾选自动打开XServer-XSDL）（一键配置脚本里已经配置自动开启XServer-XSDL客户端，此处不需要勾选）
 
-桌面环境 （XTerm）
+	桌面环境 （XTerm）
 
 其他选项保持默认！！！！！！！！！！
 
@@ -182,29 +182,29 @@ SSH （启用）（必须开启，否则连不上linux系统）
 
 ssh登录进入debian系统后执行以下命令：
 
-sudo usermod -a -G aid_inet,aid_net_raw root
+	sudo usermod -a -G aid_inet,aid_net_raw root
 
 ###由于安卓系统上chroot容器权限问题，除初始登录用户外，默认其他用户没有网络权限，包括root用户。此命令可以解决使用sudo命令时root用户无法联网的问题。
 
-sudo apt update
+	sudo apt update
 
 ###更新系统软件包
 
-sudo apt install -y git vim wget
+	sudo apt install -y git vim wget
 
 ###安装必要的工具软件
 
 5.使用kiauh安装klipper
 
-cd ~
+	cd ~
 
 ###进入登录用户家目录
 
-git clone https://github.com/th33xitus/kiauh.git
+	git clone https://github.com/th33xitus/kiauh.git
 
 ###官方kiauh脚本地址
 
-git clone https://gitee.com/miroky/kiauh.git
+	git clone https://gitee.com/miroky/kiauh.git
 
 ###国内kiauh脚本地址（与上面官方地址二选一即可）
 
@@ -216,39 +216,41 @@ git clone https://gitee.com/miroky/kiauh.git
 
 使用Xftp或命令行进入以下路径：
 
-/home/print3D/printer_data/config/
+	/home/print3D/printer_data/config/
 
 将里面的 fluidd.cfg,moonraker.conf,printer.cfg 进行备份之后把原文件删除。
 
-cd ~
+	cd ~
+
 ###进入登录用户家目录
 
 将本仓库里的fluidd.cfg,homing_override.cfg,moonraker.conf,printer.cfg 这4个文件下载后放到 /home/print3D/printer_data/config/ 路径下。
 
 或者想省事，直接执行以下命令：
 
-sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
+	sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
 
-sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
+	sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
 
-sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
+	sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
 
-sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
+	sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
 
 
 （注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。）
 
 
-将打印机主板上电启动，使用OTG线将手机和打印机主板连接。
+！！！！！！将打印机主板上电启动，使用OTG线将手机和打印机主板连接！！！！！！
 
 回到debian系统内执行如下命令：
 
-cd ~
+ 	cd ~
+
 ###进入登录用户家目录
 
-sudo wget https://github.com/gaifeng8864/klipper-on-android/blob/main/configuration_klipper_family.sh
+	sudo wget https://github.com/gaifeng8864/klipper-on-android/blob/main/configuration_klipper_family.sh
 
-bash configuration_klipper_family.sh
+	bash configuration_klipper_family.sh
 
 执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
 
@@ -261,7 +263,10 @@ bash configuration_klipper_family.sh
 使用识别的设备名称替换 configuration_klipper_family.sh 内的 ttyACM0
 
 
-然后重新执行 bash configuration_klipper_family.sh
+然后重新执行： 
+
+	bash configuration_klipper_family.sh
+
 
 祝大家每一次3D打印都能成功！！！
 

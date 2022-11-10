@@ -183,23 +183,29 @@ SSH （启用）（必须开启，否则连不上linux系统）
 ssh登录进入debian系统后执行以下命令：
 
 sudo usermod -a -G aid_inet,aid_net_raw root
+
 ###由于安卓系统上chroot容器权限问题，除初始登录用户外，默认其他用户没有网络权限，包括root用户。此命令可以解决使用sudo命令时root用户无法联网的问题。
 
-sudo apt update  
+sudo apt update
+
 ###更新系统软件包
 
 sudo apt install -y git vim wget
+
 ###安装必要的工具软件
 
 5.使用kiauh安装klipper
 
 cd ~
+
 ###进入登录用户家目录
 
 git clone https://github.com/th33xitus/kiauh.git
+
 ###官方kiauh脚本地址
 
 git clone https://gitee.com/miroky/kiauh.git
+
 ###国内kiauh脚本地址（与上面官方地址二选一即可）
 
 ###需要安装klipper，moonraker，fluidd（一键脚本暂时不支持Mainsail配置），KlipperScreen 这4个组件。

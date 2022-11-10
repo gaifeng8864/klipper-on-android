@@ -7,17 +7,19 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 
 前言：
 
+0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这已经不是问题了。
+
 1.本教程中安卓系统必须root。因每种手机硬件和系统的root方法各有不同，网络上教程很多，这里不再赘述。
 
 2.本教程软硬件环境：
 
-  小米2S手机。
+  小米2S手机
   
-  16G机身存储，2G运行内存。
+  16G机身存储，2G运行内存
 		
-  运行基于android9的魔趣9.0操作系统。
+  运行基于android9的魔趣9.0操作系统
 		
-  系统已使用魔趣官方补丁进行root。
+  系统已使用魔趣官方补丁进行root
 		
   刷机及系统root参考官方教程：
 		
@@ -25,9 +27,11 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 		
   获取root权限：https://bbs.mokeedev.com/t/topic/6577
 		
-3.理论上只要能root的安卓手机此教程都能适用，待测试。	
+3.理论上，只要能root的安卓手机此教程都能适用，待测试。	
 	  
 4.理论上，在termux里安装proot容器后安装的debian系统也可以使用，待测试。
+
+5.打印机控制主板型号：MKS SGEN-L V1.0 ，主板内SD卡中已烧录klipper固件。
 	  
 	  
 本教程特点：
@@ -36,19 +40,19 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 
 2.klipper系统依旧使用流行的kiauh脚本进行安装，升级或卸载。手机klipperscreen界面或者网页界面都可以进行升级操作。
 
-3.使用一键脚本对klipper全家桶进行针对android系统的兼容配置，方便快捷。
+3.使用一键脚本对klipper全家桶进行快速配置，方便快捷。
 			
-4.结合我自己的使用经验，修改定制了klipper全家桶的基本配置文件，关键操作更实用。
+4.结合我自己的使用经验，修改定制了klipper全家桶的基本配置文件，一些关键配置更加实用。
            								
 5.安装好以后无任何报错，可单独控制klipper，moonraker等服务启动，重启，关闭。
 			
-6.使用体验与树莓派基本没有区别，包括使用输入整形与压力补偿。
+6.使用体验与树莓派基本没有区别，包括使用输入整形与压力补偿，手机CPU温度显示，打印机主板SD卡在线升级等。
 			
 ################################################################################################################################			  
 
 具体安装步骤：
 
-本教程假设安卓手机已root！！！！！！
+本教程假设安卓手机已root！！！！！！主板内SD卡中已烧录klipper固件！！！！！！
 
 安装过程较长，手机需要连接到充电器！！！！！！
 
@@ -67,12 +71,22 @@ termux_118.apk（选装，需要时再安装）下载链接：https://github.com
 电脑端：
 
 Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
+Xftp（选装，建议安装）：https://www.netsarang.com/en/xftp/
+
+
+0.安装XServer-XSDL
+
+XServer-XSDL安装比较简单，按系统提示直接下一步就可以了。
+
+注意：安装完成后需要在第一次启动的界面点击屏幕上方 “更改设备设置” 按钮进入设置界面，依次点击 “鼠标模拟”---“鼠标仿真模式”---“桌面版，无仿真”，然后下拉到最底下点击“完成”。否则触摸无法使用。
+
+如果错过了第一次启动的界面，关闭XServer-XSDL后台运行后再次启动XServer-XSDL即可。
 
 1.安装kerneladiutor
 
 高通处理器默认有个MPD功耗控制方案，默认情况下会关闭部分CPU核心来控制功耗。
 由此带来的最大的问题就是在debian系统里会发现4核心的处理器大多数情况下却只识别出2个核心。
-kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。。
+kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。
 
 2.安装linuxdeploy
 
@@ -121,9 +135,9 @@ CPU唤醒   （勾选）
 
 初始化系统 （sysV）
 
-挂载点 （启用）
+挂载点 （可选，此应用场景下一般用不到）
 
-挂载点列表 （/sdcard/-/mnt/sdcard/）（可选，一般用不着）
+挂载点列表 （/sdcard/-/mnt/sdcard/）（可选，此应用场景下一般用不到）
 
 SSH （启用）（必须开启，否则连不上linux系统）
 
@@ -131,7 +145,7 @@ SSH （启用）（必须开启，否则连不上linux系统）
 
 图形子系统 （X11）
 
-图形界面设置 （取消勾选自动打开XServer-XSDL）（一键脚本里已经配置自动开启XServer-XSDL客户端，此处不需要勾选）
+图形界面设置 （取消勾选自动打开XServer-XSDL）（一键配置脚本里已经配置自动开启XServer-XSDL客户端，此处不需要勾选）
 
 桌面环境 （XTerm）
 
@@ -141,11 +155,13 @@ SSH （启用）（必须开启，否则连不上linux系统）
 
 配置完成后回到主界面
 
-点击右上角“三个竖点” → 安装 （安装过程比较漫长，根据网络情况大概在5-15分钟）
+点击右上角“三个竖点” → “安装” （安装过程比较漫长，根据网络情况大概在5-15分钟）
 
-安装完成后点击主界面下方“停止”后再点击“启动”（这一步不能少，否则debian系统启动不了）
+界面下方出现 "<<< linuxdeploy" 时说明安装完成
 
-系统启动完成后使用Xshell连接linux系统（IP地址显示在linuxdeploy软件主界面最上方，登录名和密码就是上面步骤里设置的，端口22，协议ssh）
+点击主界面下方“停止”，出现"<<< stop" 再点击“启动”（这一步不能少，否则debian系统启动不了）
+
+系统启动完成后使用Xshell连接debian系统（IP地址显示在linuxdeploy软件主界面最上方，登录名和密码就是上面步骤里设置的，端口22，协议ssh）
 
 至此，debian系统安装完成！！！！！！！！！！！！！！！！
 
@@ -157,13 +173,13 @@ SSH （启用）（必须开启，否则连不上linux系统）
 ssh登录进入debian系统后执行以下命令：
 
 sudo usermod -a -G aid_inet,aid_net_raw root
-###此命令可以解决使用sudo命令时root用户无法联网的问题
+###由于安卓系统上chroot容器权限问题，除初始登录用户外，默认其他用户没有网络权限，包括root用户。此命令可以解决使用sudo命令时root用户无法联网的问题。
 
 sudo apt update  
 ###更新系统软件包
 
-sudo apt install -y git vim
-###安装必要的git和vim工具软件
+sudo apt install -y git vim wget
+###安装必要的工具软件
 
 5.使用kiauh安装klipper
 
@@ -177,10 +193,65 @@ git clone https://gitee.com/miroky/kiauh.git
 ###国内kiauh脚本地址（与上面官方地址二选一即可）
 
 ###需要安装klipper，moonraker，fluidd（一键脚本暂时不支持Mainsail配置），KlipperScreen 这4个组件。
-###每安装完一个组件都会提示无法启动服务，这是安卓初始化系统与klipper全家桶不兼容的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
+###每安装完一个组件都会提示无法启动服务，这是安卓初始化系统与klipper全家桶服务启动方式不兼容的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
 ###组件安装涉及部分编译过程，耗时较长，耐心等待。只要是每个脚本都能自动安装到最后，基本就没有问题。
 
 6.klipper全家桶配置
 
-打开 → 小米2S安卓klipper安装教程 → klipper配置文件
+使用Xftp或命令行进入以下路径：
+
+/home/print3D/printer_data/config/
+
+将里面的 fluidd.cfg,moonraker.conf,printer.cfg 进行备份之后把原文件删除。
+
+cd ~
+###进入登录用户家目录
+
+将本仓库里的fluidd.cfg,homing_override.cfg,moonraker.conf,printer.cfg 这4个文件下载后放到 /home/print3D/printer_data/config/ 路径下。
+
+或者想省事，直接执行以下命令：
+
+sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
+
+sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
+
+sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
+
+sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
+
+
+注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。
+
+
+将打印机主板上电启动，使用OTG线将手机和打印机主板连接。
+
+回到debian系统内执行如下命令：
+
+cd ~
+###进入登录用户家目录
+
+sudo wget https://github.com/gaifeng8864/klipper-on-android/blob/main/configuration_klipper_family.sh
+
+bash configuration_klipper_family.sh
+
+执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
+
+
+注意：如果手机硬件已正确连接到打印机控制主板，但是运行脚本时依旧提示 "Please connect your phone to the printer "。
+     debian系统内执行以下命令查看设备识别状态：
+
+     ls -al /dev/
+
+使用识别的设备名称替换 configuration_klipper_family.sh 内的 ttyACM0
+
+
+然后重新执行 bash configuration_klipper_family.sh
+
+祝大家每一次3D打印都能成功！！！
+
+
+
+
+
+
 

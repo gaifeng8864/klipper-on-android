@@ -38,7 +38,7 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 
 1.使用一个单独的APP在图形界面下安装linux系统，配置系统自动重启，系统中文汉化等。方便管理和使用。
 
-2.klipper系统依旧使用流行的kiauh脚本进行安装，升级或卸载。手机klipperscreen界面或者网页界面都可以进行升级操作。
+2.klipper系统依旧使用流行的kiauh脚本进行安装，升级或卸载。手机KlipperScreen界面或者网页界面都可以进行升级操作。
 
 3.使用一键脚本对klipper全家桶进行快速配置，方便快捷。
 			

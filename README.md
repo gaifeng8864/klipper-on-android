@@ -19,7 +19,7 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 		
   运行基于android9的魔趣9.0操作系统
 		
-  系统已使用魔趣官方补丁进行root
+  系统已使用魔趣官方补丁获取root权限
 		
   刷机及系统root参考官方教程：
 		
@@ -50,11 +50,15 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 			
 ################################################################################################################################			  
 
-具体安装步骤：
-
-本教程假设安卓手机已root！！！！！！主板内SD卡中已烧录klipper固件！！！！！！
 
 安装过程较长，手机需要连接到充电器！！！！！！
+
+本教程假设：
+
+安卓手机已root ！！！！！！
+
+主板内SD卡中已烧录klipper固件：https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper.bin
+
 
 需要用的软件：
 
@@ -72,6 +76,9 @@ termux_118.apk（选装，需要时再安装）下载链接：https://github.com
 
 Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
 Xftp（选装，建议安装）：https://www.netsarang.com/en/xftp/
+
+
+具体安装步骤：
 
 
 0.安装XServer-XSDL

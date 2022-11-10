@@ -77,6 +77,7 @@ termux_118.apk（选装，需要时再安装）下载链接：https://github.com
 电脑端：
 
 Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
+
 Xftp（选装，建议安装）：https://www.netsarang.com/en/xftp/
 
 

@@ -7,7 +7,7 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 
 前言：
 
-0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这已经不是问题了。
+0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这些已经不是问题。
 
 1.本教程中安卓系统必须root。因每种手机硬件和系统的root方法各有不同，网络上教程很多，这里不再赘述。
 
@@ -58,6 +58,8 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 安卓手机已root ！！！！！！
 
 主板内SD卡中已烧录klipper固件：https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper.bin
+
+（SD卡中的klipper固件需要根据主板型号进行编译，此链接中的固件只适用于MKS SGEN-L V1.0）
 
 
 需要用的软件：
@@ -227,7 +229,7 @@ sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/kli
 sudo wget  /home/print3D/printer_data/config/ https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
 
 
-注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。
+（注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。）
 
 
 将打印机主板上电启动，使用OTG线将手机和打印机主板连接。

@@ -6,19 +6,21 @@ Run klipper, moonraker, fluidd, KlipperScreen one-click configuration script on 
 
 1.本教程中安卓系统必须root。因每种手机硬件和系统的root方法各有不同，网络上教程很多，这里不再赘述。
 
-2.本教程硬件环境为小米2S手机。
-	  
-	16G机身存储，2G运行内存版本。
+2.本教程软硬件环境：
+
+  小米2S手机。
+  
+  16G机身存储，2G运行内存。
 		
   运行基于android9的魔趣9.0操作系统。
 		
-	系统已使用魔趣官方补丁进行root。
+  系统已使用魔趣官方补丁进行root。
 		
-	刷机及系统root参考官方教程：
+  刷机及系统root参考官方教程：
 		
-	ROM下载与刷机：https://download.mokeedev.com/aries.html
+  ROM下载与刷机：https://download.mokeedev.com/aries.html
 		
-	获取root权限：https://bbs.mokeedev.com/t/topic/6577
+  获取root权限：https://bbs.mokeedev.com/t/topic/6577
 		
 3.理论上只要能root的安卓手机此教程都能适用，待测试。	
 	  
@@ -49,15 +51,19 @@ Run klipper, moonraker, fluidd, KlipperScreen one-click configuration script on 
 
 需要用的软件：
 
-手机端：XServer-XSDL-1.20.51.apk（必装） 下载链接：https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/
+手机端：
+
+XServer-XSDL-1.20.51.apk（必装） 下载链接：https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/
     
-        linuxdeploy-2.6.0-259.apk（必装） 下载链接：https://github.com/meefik/linuxdeploy/releases/download/2.6.0/linuxdeploy-2.6.0-259.apk
+linuxdeploy-2.6.0-259.apk（必装） 下载链接：https://github.com/meefik/linuxdeploy/releases/download/2.6.0/linuxdeploy-2.6.0-259.apk
 
-        kerneladiutor_248.apk（开启所有CPU核心，推荐安装） 下载链接：https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
+kerneladiutor_248.apk（开启所有CPU核心，推荐安装） 下载链接：https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
 
-		    termux_118.apk（选装，需要时再安装）下载链接：https://github.com/termux/termux-app/releases/tag/v0.118.0
+termux_118.apk（选装，需要时再安装）下载链接：https://github.com/termux/termux-app/releases/tag/v0.118.0
 		
-电脑端：Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
+电脑端：
+
+Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
 
 1.安装kerneladiutor
 

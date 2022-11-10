@@ -1,5 +1,8 @@
 # klipper-on-android
-Run klipper, moonraker, fluidd, KlipperScreen one-click configuration script on android system.
+Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click script for quick configuration.
+
+在android系统上运行klipper，moonraker，fluidd，KlipperScreen，一键脚本快速配置。
+
 
 
 前言：

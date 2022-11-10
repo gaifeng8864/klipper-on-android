@@ -232,13 +232,13 @@ ssh登录进入debian系统后执行以下命令：
 
 或者想省事，直接执行以下命令：
 
-	sudo wget -O /home/print3D/printer_data/config/fluidd.cfg  https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
+	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
 
-	sudo wget -O /home/print3D/printer_data/config/homing_override.cfg  https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
+	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
 
-	sudo wget -O /home/print3D/printer_data/config/moonraker.conf  https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
+	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
 
-	sudo wget -O /home/print3D/printer_data/config/printer.cfg  https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
+	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
 
 
 （注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。）

@@ -69,7 +69,7 @@ Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
 
 高通处理器默认有个MPD功耗控制方案，默认情况下会关闭部分CPU核心来控制功耗。
 由此带来的最大的问题就是在debian系统里会发现4核心的处理器大多数情况下却只识别出2个核心。
-kerneladiutor是安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。。
+kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。。
 
 2.安装linuxdeploy
 
@@ -174,10 +174,10 @@ git clone https://gitee.com/miroky/kiauh.git
 ###国内kiauh脚本地址（与上面官方地址二选一即可）
 
 ###需要安装klipper，moonraker，fluidd（一键脚本暂时不支持Mainsail配置），KlipperScreen 这4个组件。
-###每安装完一个组件都会提示无法启动服务，这是安卓系统的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
+###每安装完一个组件都会提示无法启动服务，这是安卓初始化系统与klipper全家桶不兼容的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
 ###组件安装涉及部分编译过程，耗时较长，耐心等待。只要是每个脚本都能自动安装到最后，基本就没有问题。
 
-6.klipper全家桶安卓与安卓系统兼容配置
+6.klipper全家桶配置
 
 打开 → 小米2S安卓klipper安装教程 → klipper配置文件
 

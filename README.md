@@ -3,6 +3,15 @@ Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click scrip
 
 在android系统上运行klipper，moonraker，fluidd，KlipperScreen，一键脚本快速配置。
 
+站在巨人的肩膀上！！！
+
+Standing on the shoulders of giants!!!
+
+grateful:
+
+Original klipper, moonraker and xterm init scripts by @d4rk50ul1 (https://github.com/d4rk50ul1/klipper-on-android)
+
+Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)
 
 
 前言：
@@ -276,6 +285,11 @@ ssh登录进入debian系统后执行以下命令：
 
 
 
+备注：
+
+构建和刷写SD卡固件请参考：https://www.klipper3d.org/Installation.html
+
+SD卡固件在线更新请参考：https://www.klipper3d.org/SDCard_Updates.html
 
 
 

@@ -241,14 +241,13 @@ ssh登录进入debian系统后执行以下命令：
 
 或者想省事，直接执行以下命令：
 
-	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/fluidd.cfg
+	sudo wget -P /home/print3D/printer_data/config/  https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/fluidd.cfg
 
-	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/homing_override.cfg
+	sudo wget -P /home/print3D/printer_data/config/  https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/homing_override.cfg
 
-	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/moonraker.conf
+	sudo wget -P /home/print3D/printer_data/config/  https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/moonraker.conf
 
-	sudo wget -P /home/print3D/printer_data/config/  https://github.com/gaifeng8864/klipper-on-android/blob/main/printer.cfg
-
+	sudo wget -P /home/print3D/printer_data/config/  https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/printer.cfg
 
 （注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。）
 
@@ -261,7 +260,7 @@ ssh登录进入debian系统后执行以下命令：
 
 ###进入登录用户家目录
 
-	sudo wget https://github.com/gaifeng8864/klipper-on-android/blob/main/configuration_klipper_family.sh
+	sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family.sh
 
 	bash configuration_klipper_family.sh
 

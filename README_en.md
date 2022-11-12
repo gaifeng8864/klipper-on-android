@@ -24,7 +24,7 @@
 
    Xiaomi 2S mobile phone
   
-   16G body storage, 2G running memory
+   16G ROM, 2G RAM
 
    Run MOKEE9.0 operating system based on android9.0
 
@@ -71,7 +71,7 @@
 
 Required software:
 
-cell phone:
+mobile phone:
 
 XServer-XSDL-1.20.51.apk (required) Download link: https://sourceforge.net/projects/libsdl-android/files/apk/XServer-XSDL/
     

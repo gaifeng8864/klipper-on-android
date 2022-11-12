@@ -1,20 +1,21 @@
 # klipper-on-android
-Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click script for quick configuration.
 
-在android系统上运行klipper，moonraker，fluidd，KlipperScreen，一键脚本快速配置。
+**在android系统上运行klipper，moonraker，fluidd，KlipperScreen，一键脚本快速配置。**
 
-站在巨人的肩膀上！！！
+**Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click script for quick configuration.**
 
-Standing on the shoulders of giants!!!
+***站在巨人的肩膀上！！！***
 
-grateful:
+***Standing on the shoulders of giants!!!***
 
-Original klipper, moonraker and xterm init scripts by @d4rk50ul1 (https://github.com/d4rk50ul1/klipper-on-android)
+***grateful:***
 
-Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)
+***Original klipper, moonraker and xterm init scripts by @d4rk50ul1 (https://github.com/d4rk50ul1/klipper-on-android)***
+
+***Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)***
 
 
-前言：
+**前言：**
 
 0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这些已经不是问题。
 
@@ -43,7 +44,7 @@ Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODE
 5.打印机控制主板型号：MKS SGEN-L V1.0 ，主板内SD卡中已烧录klipper固件。
 	  
 	  
-本教程特点：
+**本教程特点:**
 
 1.使用一个单独的APP在图形界面下安装linux系统，配置系统自动重启，系统中文汉化等。方便管理和使用。
 
@@ -57,18 +58,18 @@ Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODE
 			
 6.使用体验与树莓派基本没有区别，包括使用输入整形与压力补偿，手机CPU温度显示，打印机主板固件SD卡在线升级等。
 			
-################################################################################################################################			  
+#######################################################################################################			  
 
 
-安装过程较长，手机需要连接到充电器！！！！！！
+***安装过程较长，手机需要连接到充电器！！！！！！***
 
-本教程假设：
+***本教程假设：***
 
-安卓手机已root ！！！！！！
+***安卓手机已root ！！！！！！***
 
-主板内SD卡中已烧录klipper固件：https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper.bin
+***主板内SD卡中已烧录klipper固件：https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper.bin***
 
-（SD卡中的klipper固件需要根据主板型号进行编译，此链接中的固件只适用于MKS SGEN-L V1.0）
+***（SD卡中的klipper固件需要根据主板型号进行编译，此链接中的固件只适用于MKS SGEN-L V1.0）***
 
 
 需要用的软件：
@@ -90,10 +91,9 @@ Xshell（必装）官网地址：https://www.netsarang.com/en/xshell/
 Xftp（选装，建议安装）：https://www.netsarang.com/en/xftp/
 
 
-具体安装步骤：
 
 
-0.安装XServer-XSDL
+## 0.安装XServer-XSDL ##
 
 XServer-XSDL安装比较简单，按系统提示直接下一步就可以了。
 
@@ -101,15 +101,16 @@ XServer-XSDL安装比较简单，按系统提示直接下一步就可以了。
 
 如果错过了第一次启动的界面，关闭XServer-XSDL后台运行后再次启动XServer-XSDL即可。
 
-1.安装kerneladiutor
+## 1.安装kerneladiutor ##
 
 高通处理器默认有个MPD功耗控制方案，默认情况下会关闭部分CPU核心来控制功耗。
 由此带来的最大的问题就是在debian系统里会发现4核心的处理器大多数情况下却只识别出2个核心。
 kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。
 
-2.安装linuxdeploy
+## 2.安装linuxdeploy ##
 
-根据系统提示安装apk文件，安装完成后打开软件点击主界面左上角“三横杠”打开软件设置：
+根据系统提示安装apk文件，安装完成后打开软件点击主界面左上角“![三横杠](https://user-images.githubusercontent.com/16047447/201450191-fc8d09bc-7ae5-4e9a-97a2-a92c5fdf36c2.PNG)
+”打开软件设置：
 
 	锁定Wi-Fi （勾选）
 
@@ -128,9 +129,10 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
 
-3.安装debian系统
+## 3.安装debian系统 ##
 
-设置好后回到主界面，点击右下角“三横杠滑动开关”打开linux系统安装配置。
+设置好后回到主界面，点击右下角“![滑动开关](https://user-images.githubusercontent.com/16047447/201450293-096d3977-1b77-435d-8106-bf95c27d6052.PNG)
+”打开linux系统安装配置。
 
 	发行版 （Debian）
 
@@ -174,7 +176,8 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 
 配置完成后回到主界面
 
-点击右上角“三个竖点” → “安装” （安装过程比较漫长，根据网络情况大概在5-15分钟）
+点击右上角“![三竖点](https://user-images.githubusercontent.com/16047447/201450321-113c378f-88ec-4009-871f-0c76eabf3004.PNG)
+” 点击 “安装” （安装过程比较漫长，根据网络情况大概在5-15分钟）
 
 界面下方出现 "<<< deploy" 时说明安装完成
 
@@ -187,7 +190,7 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
 
-4.klipper安装环境配置
+## 4.klipper安装环境配置 ##
 
 ssh登录进入debian系统后执行以下命令：
 
@@ -203,7 +206,7 @@ ssh登录进入debian系统后执行以下命令：
 
 ###安装必要的工具软件
 
-5.使用kiauh安装klipper
+## 5.使用kiauh安装klipper ##
 
 	cd ~
 
@@ -225,7 +228,7 @@ ssh登录进入debian系统后执行以下命令：
 每安装完一个组件都会提示无法启动服务，这是安卓初始化系统与klipper全家桶服务启动方式不兼容的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
 组件安装涉及部分编译过程，耗时较长，耐心等待。只要是每个脚本都能自动安装到最后，基本就没有问题。
 
-6.klipper全家桶配置
+## 6.klipper全家桶配置 ##
 
 使用Xftp或命令行进入以下路径：
 
@@ -249,10 +252,10 @@ ssh登录进入debian系统后执行以下命令：
 
 	sudo wget -P /home/print3D/printer_data/config/  https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/printer.cfg
 
-（注意：printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。）
+***注意：*** printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。
 
 
-！！！！！！将打印机主板上电启动，使用OTG线将手机和打印机主板连接！！！！！！
+***！！！！！！将打印机主板上电启动，使用OTG线将手机和打印机主板连接！！！！！！***
 
 回到debian系统内执行如下命令：
 
@@ -267,7 +270,7 @@ ssh登录进入debian系统后执行以下命令：
 执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
 
 
-注意：如果手机硬件已正确连接到打印机控制主板，但是运行脚本时依旧提示 "Please connect your phone to the printer "。
+***注意：*** 如果手机硬件已正确连接到打印机控制主板，但是运行脚本时依旧提示 " **Please connect your phone to the printer** "。
      debian系统内执行以下命令查看设备识别状态：
 
      ls -al /dev/
@@ -284,11 +287,11 @@ ssh登录进入debian系统后执行以下命令：
 
 
 
-备注：
+**备注：**
 
-构建和刷写SD卡固件请参考：https://www.klipper3d.org/Installation.html
+**构建和刷写SD卡固件请参考：https://www.klipper3d.org/Installation.html**
 
-SD卡固件在线更新请参考：https://www.klipper3d.org/SDCard_Updates.html
+**SD卡固件在线更新请参考：https://www.klipper3d.org/SDCard_Updates.html**
 
 
 

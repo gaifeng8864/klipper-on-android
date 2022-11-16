@@ -10,11 +10,11 @@
 
 ***grateful:***
 
-***Original klipper, moonraker and xterm init scripts by @d4rk50ul1 ***
+***Original klipper, moonraker and xterm init scripts by @d4rk50ul1***
 
 ***(https://github.com/d4rk50ul1/klipper-on-android)***
 
-***Original ttyACM0 initialization script by @CODERUS ***
+***Original ttyACM0 initialization script by @CODERUS***
 
 ***(https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)***
 

@@ -87,4 +87,73 @@ Xshell (required) official website address: https://www.netsarang.com/en/xshell/
 
 Xftp (optional, recommended installation): https://www.netsarang.com/en/xftp/
 
+## 0. Install XServer-XSDL ##
 
+The installation of XServer-XSDL is relatively simple, just follow the system prompt and go directly to the next step.
+
+Note: After the installation is complete, you need to click the "Change Device Settings" button at the top of the screen on the first startup interface to enter the setting interface, and then click "Mouse Simulation" --- "Mouse Simulation Mode" --- "Desktop version, no simulation" , then scroll down to the bottom and click Done. Otherwise the touch cannot be used.
+
+If you miss the interface for the first startup, just close XServer-XSDL running in the background and start XServer-XSDL again.
+
+## 1. Install kerneladiutor ##
+
+Qualcomm processors have an MPD power consumption control scheme by default. By default, some CPU cores are turned off to control power consumption.
+The biggest problem caused by this is that in the debian system, it will be found that the processor with 4 cores only recognizes 2 cores in most cases.
+kerneladiutor is a simple and easy-to-use Android kernel management software, used to adjust the frequency and performance of CPU and GPU. All CPU cores can be forcibly turned on to make full use of the performance of the phone.
+
+## 2. Install linuxdeploy ##
+
+Install the apk file according to the system prompts. After the installation is complete, open the software and click on the upper left corner of the main interface "![Three horizontal bars](https://user-images.githubusercontent.com/16047447/201450191-fc8d09bc-7ae5-4e9a-97a2-a92c5fdf36c2 .PNG)
+"Open the software settings:
+
+Lock screen (no)
+
+Lock Wi-Fi (yes)
+
+Wake lock (yes)
+
+Autostart (yes)
+
+Autostart delay (5) (set as needed, increase the number if you want to start later)
+
+Track network changes (yes)
+
+Other options remain default! ! ! ! ! ! ! ! ! !
+
+! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+
+
+## 3. Install debian system ##
+
+After setting, return to the main interface, click on the lower right corner "! [slide switch](https://user-images.githubusercontent.com/16047447/201450293-096d3977-1b77-435d-8106-bf95c27d6052.PNG)
+"Open the Linux system installation configuration.
+
+Distribution (Debian)
+
+Architecture (armhf) (Check your mobile phone processor model by yourself, if it supports 64 bits, choose arm64)
+
+Distribution suite (stable)
+
+Installation type (Directory)
+
+Installation path (/data/debian11)
+
+Username (print3D) (because it involves the path of the klipper configuration file, it is recommended to use this username)
+
+User password: (123456) (set whatever you want, as long as you can remember it)
+
+INIT (enable)
+
+Init system (sysV)
+
+SSH (enabled) (must be enabled, otherwise it will not be able to connect to the linux system)
+
+GUI (enabled)
+
+Graphics subsystem (X11)
+
+Desktop environment (XTerm)
+
+Other options remain default! ! ! ! ! ! ! ! ! !
+
+! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !

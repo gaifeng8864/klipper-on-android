@@ -12,6 +12,9 @@
 
 ***Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)***
 
+
+**video tutorial: https://youtu.be/s1tdqg6ke4w**
+
 **Foreword:**
 
 0. Although the steps in this tutorial are as comprehensive and detailed as possible, 

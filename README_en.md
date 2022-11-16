@@ -30,7 +30,7 @@
 
    The system has used MOKEE's official patch to obtain root privileges
 
-   Brush and system root refer to the official tutorial:
+   flash and root refer to the official tutorial:
 
    ROM download and flash: https://download.mokeedev.com/aries.html
 

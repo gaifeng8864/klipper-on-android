@@ -11,7 +11,7 @@
 
 ***感谢:***
 
-***klipper, moonraker and xterm 初始化脚本来自 @d4rk50ul1***
+***klipper, moonraker 和 xterm 初始化脚本来自 @d4rk50ul1***
 
 ***(https://github.com/d4rk50ul1/klipper-on-android)***
 

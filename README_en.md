@@ -68,7 +68,7 @@
 
 ***Android phone is rooted! ! ! ! ! !***
 
-***The klipper firmware has been flashed in the SD card in the motherboard: https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper.bin***
+***The klipper firmware has been flashed in the SD card in the motherboard: [klipper(MKS SGEN-L V1.0).bin](https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper(MKS%20SGEN-L%20V1.0).bin?raw=true)***
 
 ***(The klipper firmware in SD card needs to be compiled according to the motherboard model, the firmware in this link is only for MKS SGEN-L V1.0)***
 

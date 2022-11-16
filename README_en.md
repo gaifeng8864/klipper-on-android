@@ -158,3 +158,19 @@ Other options remain default! ! ! ! ! ! ! ! ! !
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
 
+After the configuration is complete, return to the main interface
+
+Click on the upper right corner "![三竖点](https://user-images.githubusercontent.com/16047447/202128541-77af60ad-6f61-4c7d-8e40-4b020f144e1f.png)
+" Click "Install" (The installation process is relatively long, about 5-15 minutes depending on the network situation)
+
+When "<<< deploy" appears at the bottom of the interface, the installation is complete
+
+Click "STOP" at the bottom of the main interface, "<<< stop" will appear, and then click "START" (this step is necessary, otherwise the debian system will not start)
+
+After the system is started, use Xshell to connect to the debian system (the IP address is displayed at the top of the main interface of the linuxdeploy software, the login name and password are set in the above steps, port 22, protocol ssh)
+
+At this point, the debian system installation is complete! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+
+! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+
+

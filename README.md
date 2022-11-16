@@ -6,6 +6,20 @@
 
 **The English version of the tutorial is here: [README_en.md](https://github.com/gaifeng8864/klipper-on-android/blob/main/README_en.md)**
 
+
+**视频教程在这里：**
+
+B站：
+
+[【保姆级教程】告别树莓派，安卓klipper全新安装方案+一键配置脚本，只需一点，从此告别安卓手机只能换脸盆的命运](https://www.bilibili.com/video/BV1BG4y1t7RR/?vd_source=7fb5d23ecaaec9c060d89fdde67b3d1b)
+
+YOUTUBE：
+
+[【教程】告别树莓派，安卓klipper全新安装方案+一键配置脚本](https://www.youtube.com/watch?v=s1tdqg6ke4w)
+
+
+
+
 ***站在巨人的肩膀上！！！***
 
 

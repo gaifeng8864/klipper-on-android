@@ -210,3 +210,68 @@ After logging in to the debian system with ssh, execute the following command:
 ### Need to install klipper, moonraker, fluidd (one-click script does not support Mainsail configuration), KlipperScreen these 4 components.
 Every time a component is installed, it will prompt that the service cannot be started. This is the reason why the Android initialization system is not compatible with the klipper family bucket service startup method. Don’t worry about it. If it can be started, there is no need to configure it with a one-click script.
 Component installation involves part of the compilation process, which takes a long time, so wait patiently. As long as each script can be automatically installed to the end, there is basically no problem.
+
+## 6. klipper family bucket configuration ##
+
+Use Xftp or the command line to enter the following path:
+
+      /home/print3D/printer_data/config/
+
+Backup the fluidd.cfg, moonraker.conf, printer.cfg inside and delete the original files.
+
+      cd ~
+
+### Enter the login user's home directory
+
+Download the four files fluidd.cfg, homing_override.cfg, moonraker.conf, printer.cfg in this warehouse and put them in the /home/print3D/printer_data/config/ path.
+
+Or if you want to save trouble, execute the following command directly:
+
+      sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/fluidd.cfg
+
+      sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/homing_override.cfg
+
+      sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/moonraker.conf
+
+      sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/printer.cfg
+
+***Note:*** printer.cfg This configuration file needs to be changed according to the model of the printer control board. For details, please refer to the configuration instructions of each motherboard.
+
+
+***! ! ! ! ! ! Power on the main board of the printer, and connect the mobile phone and the main board of the printer with an OTG cable! ! ! ! ! ! ***
+
+Go back to the debian system and execute the following command:
+
+      cd ~
+
+### Enter the login user's home directory
+
+      sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family.sh
+
+      bash configuration_klipper_family.sh
+
+After the execution is complete, restart the mobile phone. If there is no problem, the klipper family bucket and XServer-XSDL will automatically start and connect to the printer, and the KlipperScreen classic interface will be displayed on the screen.
+
+
+***Note:*** If the mobile phone hardware has been correctly connected to the printer control board, but the prompt " **Please connect your phone to the printer** " is still displayed when running the script.
+     Execute the following command in the debian system to view the device identification status:
+
+      ls -al /dev/
+
+Replace ttyACM0 in configuration_klipper_family.sh with the recognized device name
+
+
+Then re-execute:
+
+      bash configuration_klipper_family.sh
+
+
+I wish you every success in 3D printing! ! !
+
+
+
+**Remark:**
+
+**For building and flashing SD card firmware, please refer to: https://www.klipper3d.org/Installation.html**
+
+**For online update of SD card firmware, please refer to: https://www.klipper3d.org/SDCard_Updates.html**

@@ -4,22 +4,22 @@
 
 **Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click script for quick configuration.**
 
+**The English version of the tutorial is here: [README_en.md](https://github.com/gaifeng8864/klipper-on-android/blob/main/README_en.md)**
+
 ***站在巨人的肩膀上！！！***
 
-***Standing on the shoulders of giants!!!***
 
-***grateful:***
+***感谢:***
 
-***Original klipper, moonraker and xterm init scripts by @d4rk50ul1***
+***klipper, moonraker and xterm 初始化脚本来自 @d4rk50ul1***
 
 ***(https://github.com/d4rk50ul1/klipper-on-android)***
 
-***Original ttyACM0 initialization script by @CODERUS***
+***ttyACM0 初始化脚本来自 @CODERUS***
 
 ***(https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)***
 
 
-**The English version of the tutorial is here: [README_en.md](https://github.com/gaifeng8864/klipper-on-android/blob/main/README_en.md)**
 
 
 **前言：**

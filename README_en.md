@@ -22,7 +22,7 @@
    
 2. The software and hardware environment of this tutorial:
 
-   Xiaomi 2S mobile phone
+   Xiaomi 2S(aries)
   
    16G ROM, 2G RAM
 

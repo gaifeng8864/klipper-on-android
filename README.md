@@ -88,7 +88,7 @@ YOUTUBE：
 
 ***安卓手机已root ！！！！！！***
 
-***主板内SD卡中已烧录klipper固件：https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper(MKS%20SGEN-L%20V1.0).bin?raw=true***
+***主板内SD卡中已烧录klipper固件：[klipper(MKS SGEN-L V1.0).bin](https://github.com/gaifeng8864/klipper-on-android/blob/main/klipper(MKS%20SGEN-L%20V1.0).bin?raw=true)***
 
 ***（SD卡中的klipper固件需要根据主板型号进行编译，此链接中的固件只适用于MKS SGEN-L V1.0）***
 

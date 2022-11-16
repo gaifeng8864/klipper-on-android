@@ -15,7 +15,7 @@ B站：
 
 YOUTUBE：
 
-[【教程】告别树莓派，安卓klipper全新安装方案+一键配置脚本](https://www.youtube.com/watch?v=s1tdqg6ke4w)
+[【教程】告别树莓派，安卓klipper全新安装方案+一键配置脚本](https://youtu.be/s1tdqg6ke4w)
 
 
 

@@ -15,6 +15,9 @@
 ***Original ttyACM0 initialization script by @CODERUS (https://gist.github.com/CODERUS/a5ec4a456f5b58186cbebb66a8542a2e)***
 
 
+**The English version of the tutorial is here: [README_en.md](https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/README_en.md)**
+
+
 **前言：**
 
 0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这些已经不是问题。

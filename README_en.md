@@ -40,7 +40,7 @@
 
 4. In theory, the debian system installed after installing the proroot container in termux can also be used, to be tested.
 
-5. The printer control motherboard model: MKS SGEN-L V1.0, the klipper firmware has been burned in the SD card in the motherboard.
+5. The printer control motherboard model: MKS SGEN-L V1.0, the klipper firmware has been flashed in the SD card in the motherboard.
 
 
 **Features of this tutorial:**

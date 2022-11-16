@@ -1,7 +1,7 @@
 # klipper-on-android
 
 
-**Run klipper, moonraker, fluidd, KlipperScreen on android system, one-click script for quick configuration.**
+**Run klipper, moonraker, fluidd, KlipperScreen on android , one-click script for quick configuration.**
 
 
 ***Standing on the shoulders of giants!!!***
@@ -15,9 +15,9 @@
 **Foreword:**
 
 0. Although the steps in this tutorial are as comprehensive and detailed as possible, 
-   it is not suitable for complete novice users because it involves basic linux system usage and klipper configuration.
+   it is not suitable for complete novice users because it involves basic linux usage and klipper configuration.
 
-1. The Android system in this tutorial must be rooted. Because the root method of each mobile phone hardware and system is different, 
+1. The AndroidOS in this tutorial must be rooted. Because the root method of each mobile phone hardware and OS is different, 
    there are many tutorials on the Internet, so I won't repeat them here.
    
 2. The software and hardware environment of this tutorial:
@@ -26,9 +26,9 @@
   
    16G ROM, 2G RAM
 
-   Run MOKEE9.0 operating system based on android9.0
+   Run MOKEE9.0 OS based on android9.0
 
-   The system has used MOKEE's official patch to obtain root privileges
+   The OS has used MOKEE's official patch to obtain root privileges
 
    flash and root refer to the official tutorial:
 
@@ -38,14 +38,14 @@
 
 3. In theory, this tutorial can be applied to any rooted Android phone, to be tested.
 
-4. In theory, the debian system installed after installing the proroot container in termux can also be used, to be tested.
+4. In theory, the debian installed after installing the proroot container in termux can also be used, to be tested.
 
 5. The printer control motherboard model: MKS SGEN-L V1.0, the klipper firmware has been flashed in the SD card in the motherboard.
 
 
 **Features of this tutorial:**
 
-1. Use a separate APP to install the linux operating system under the graphical interface, configure the operating system to automatically restart, etc. Easy to manage and use.
+1. Use a separate APP to install the linux under the graphical interface, configure the OS to automatically restart, etc. Easy to manage and use.
 
 2. klipper still uses the popular kiauh script to install, upgrade or uninstall. The KlipperScreen interface of the mobile phone or the web interface can be used to upgrade each module.
 
@@ -89,7 +89,7 @@ Xftp (optional, recommended installation): https://www.netsarang.com/en/xftp/
 
 ## 0. Install XServer-XSDL ##
 
-The installation of XServer-XSDL is relatively simple, just follow the system prompt and go directly to the next step.
+The installation of XServer-XSDL is relatively simple, just follow the OS prompt and go directly to the next step.
 
 Note: After the installation is complete, you need to click the "Change Device Settings" button at the top of the screen on the first startup interface to enter the setting interface, and then click "Mouse Simulation" --- "Mouse Simulation Mode" --- "Desktop version, no simulation" , then scroll down to the bottom and click Done. Otherwise the touch cannot be used.
 
@@ -98,12 +98,12 @@ If you miss the interface for the first startup, just close XServer-XSDL running
 ## 1. Install kerneladiutor ##
 
 Qualcomm processors have an MPD power consumption control scheme by default. By default, some CPU cores are turned off to control power consumption.
-The biggest problem caused by this is that in the debian system, it will be found that the processor with 4 cores only recognizes 2 cores in most cases.
+The biggest problem caused by this is that in the debian , it will be found that the processor with 4 cores only recognizes 2 cores in most cases.
 kerneladiutor is a simple and easy-to-use Android kernel management software, used to adjust the frequency and performance of CPU and GPU. All CPU cores can be forcibly turned on to make full use of the performance of the phone.
 
 ## 2. Install linuxdeploy ##
 
-Install the apk file according to the system prompts. After the installation is complete, open the software and click on the upper left corner of the main interface "
+Install the apk file according to the OS prompts. After the installation is complete, open the software and click on the upper left corner of the main interface "
 ![三横杠](https://user-images.githubusercontent.com/16047447/202127479-5174b558-7677-4cb6-8b69-dfbd6ef8e11b.png)"Open the software settings:
 
 Lock screen (no)
@@ -123,9 +123,9 @@ Other options remain default! ! ! ! ! ! ! ! ! !
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
 
-## 3. Install debian system ##
+## 3. Install debian ##
 
-After setting, return to the main interface, click on the lower right corner "![滑动开关](https://user-images.githubusercontent.com/16047447/202127702-f66eca3e-0300-40f5-a1f0-43e42236b7fc.png)"Open the Linux system installation configuration.
+After setting, return to the main interface, click on the lower right corner "![滑动开关](https://user-images.githubusercontent.com/16047447/202127702-f66eca3e-0300-40f5-a1f0-43e42236b7fc.png)"Open the Linux installation configuration.
 
 Distribution (Debian)
 
@@ -145,7 +145,7 @@ INIT (enable)
 
 Init system (sysV)
 
-SSH (enabled) (must be enabled, otherwise it will not be able to connect to the linux system)
+SSH (enabled) (must be enabled, otherwise it will not be able to connect to the linux)
 
 GUI (enabled)
 
@@ -165,25 +165,25 @@ Click on the upper right corner "![三竖点](https://user-images.githubusercont
 
 When "<<< deploy" appears at the bottom of the interface, the installation is complete
 
-Click "STOP" at the bottom of the main interface, "<<< stop" will appear, and then click "START" (this step is necessary, otherwise the debian system will not start)
+Click "STOP" at the bottom of the main interface, "<<< stop" will appear, and then click "START" (this step is necessary, otherwise the debian will not start)
 
-After the system is started, use Xshell to connect to the debian system (the IP address is displayed at the top of the main interface of the linuxdeploy software, the login name and password are set in the above steps, port 22, protocol ssh)
+After the OS is started, use Xshell to connect to the debian (the IP address is displayed at the top of the main interface of the linuxdeploy software, the login name and password are set in the above steps, port 22, protocol ssh)
 
-At this point, the debian system installation is complete! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+At this point, the debian installation is complete! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
 ## 4.klipper installation environment configuration ##
 
-After logging in to the debian system with ssh, execute the following command:
+After logging in to the debian with ssh, execute the following command:
 
       sudo usermod -a -G aid_inet,aid_net_raw root
 
-###Because of the chroot container permission problem on the Android system, except for the initial login user, other users have no network permission by default, including the root user. This command can solve the problem that the root user cannot connect to the Internet when using the sudo command.
+###Because of the chroot container permission problem on the Android , except for the initial login user, other users have no network permission by default, including the root user. This command can solve the problem that the root user cannot connect to the Internet when using the sudo command.
 
       sudo apt update
 
-###Update system packages
+###Update packages
 
       sudo apt install -y git vim wget
 
@@ -240,7 +240,7 @@ Or if you want to save trouble, execute the following command directly:
 
 ***! ! ! ! ! ! Power on the main board of the printer, and connect the mobile phone and the main board of the printer with an OTG cable! ! ! ! ! ! ***
 
-Go back to the debian system and execute the following command:
+Go back to the debian and execute the following command:
 
       cd ~
 
@@ -254,7 +254,7 @@ After the execution is complete, restart the mobile phone. If there is no proble
 
 
 ***Note:*** If the mobile phone hardware has been correctly connected to the printer control board, but the prompt " **Please connect your phone to the printer** " is still displayed when running the script.
-     Execute the following command in the debian system to view the device identification status:
+     Execute the following command in the debian to view the device identification status:
 
       ls -al /dev/
 

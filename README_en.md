@@ -103,8 +103,8 @@ kerneladiutor is a simple and easy-to-use Android kernel management software, us
 
 ## 2. Install linuxdeploy ##
 
-Install the apk file according to the system prompts. After the installation is complete, open the software and click on the upper left corner of the main interface "![Three horizontal bars](https://user-images.githubusercontent.com/16047447/201450191-fc8d09bc-7ae5-4e9a-97a2-a92c5fdf36c2 .PNG)
-"Open the software settings:
+Install the apk file according to the system prompts. After the installation is complete, open the software and click on the upper left corner of the main interface "
+![三横杠](https://user-images.githubusercontent.com/16047447/202127479-5174b558-7677-4cb6-8b69-dfbd6ef8e11b.png)"Open the software settings:
 
 Lock screen (no)
 
@@ -125,8 +125,7 @@ Other options remain default! ! ! ! ! ! ! ! ! !
 
 ## 3. Install debian system ##
 
-After setting, return to the main interface, click on the lower right corner "! [slide switch](https://user-images.githubusercontent.com/16047447/201450293-096d3977-1b77-435d-8106-bf95c27d6052.PNG)
-"Open the Linux system installation configuration.
+After setting, return to the main interface, click on the lower right corner "![滑动开关](https://user-images.githubusercontent.com/16047447/202127702-f66eca3e-0300-40f5-a1f0-43e42236b7fc.png)"Open the Linux system installation configuration.
 
 Distribution (Debian)
 
@@ -157,3 +156,5 @@ Desktop environment (XTerm)
 Other options remain default! ! ! ! ! ! ! ! ! !
 
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+
+

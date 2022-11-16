@@ -173,4 +173,40 @@ At this point, the debian system installation is complete! ! ! ! ! ! ! ! ! ! ! !
 
 ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
 
+## 4.klipper installation environment configuration ##
 
+After logging in to the debian system with ssh, execute the following command:
+
+   sudo usermod -a -G aid_inet,aid_net_raw root
+
+###Because of the chroot container permission problem on the Android system, except for the initial login user, other users have no network permission by default, including the root user. This command can solve the problem that the root user cannot connect to the Internet when using the sudo command.
+
+   sudo apt update
+
+###Update system packages
+
+   sudo apt install -y git vim wget
+
+###Install the necessary tools and software
+
+## 5. Install klipper using kiauh ##
+
+   cd ~
+
+### Enter the login user's home directory
+
+   git clone https://github.com/th33xitus/kiauh.git
+
+###Official kiauh script address
+
+   git clone https://gitee.com/miroky/kiauh.git
+
+###Domestic kiauh script address (choose one from the official address above)
+
+   ./kiauh/kiauh.sh
+
+###Start the script to start installing the klipper family bucket
+
+### Need to install klipper, moonraker, fluidd (one-click script does not support Mainsail configuration), KlipperScreen these 4 components.
+Every time a component is installed, it will prompt that the service cannot be started. This is the reason why the Android initialization system is not compatible with the klipper family bucket service startup method. Don’t worry about it. If it can be started, there is no need to configure it with a one-click script.
+Component installation involves part of the compilation process, which takes a long time, so wait patiently. As long as each script can be automatically installed to the end, there is basically no problem.

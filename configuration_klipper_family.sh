@@ -34,10 +34,39 @@ USR_LOCAL_BIN_XTERM=/usr/local/bin/xterm
 TTYFIX="/usr/bin/ttyfix"
 TTYFIX_START="/etc/init.d/ttyfix"
 
+POWERFIX="/usr/bin/powerfix"
+POWERFIX_START="/etc/init.d/powerfix"
+
 ### packages
 echo "Installing required packages"
 
-sudo apt install -y inotify-tools fonts-wqy-zenhei 
+sudo apt install -y inotify-tools fonts-wqy-zenhei iw
+
+### Configuration for power
+sudo tee "$POWERFIX" <<EOF
+#!/bin/bash
+sudo unchroot dumpsys battery set status 2
+sudo unchroot dumpsys battery set level 98
+sudo unchroot iw wlan0 set power_save off 
+EOF
+sudo chmod +x "$POWERFIX"
+
+sudo tee "$POWERFIX_START" <<EOF
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          powerfix
+# Default-Start:        2 3 4 5
+# Default-Stop:
+# Required-Start:    \$local_fs \$remote_fs
+# Short-Description: powerfix
+# Description: powerfix
+### END INIT INFO
+
+$POWERFIX
+
+exit 0
+EOF
+sudo chmod +x "$POWERFIX_START"
 
 ### Configuration for Klipperscreen_xterm
 sudo tee "$USR_LOCAL_BIN_XTERM" <<EOF
@@ -260,6 +289,7 @@ sudo chmod +x $ETC_INIT_MOONRAKER
 sudo update-rc.d ttyfix defaults 
 sudo update-rc.d klipper defaults 
 sudo update-rc.d moonraker defaults 
+sudo update-rc.d powerfix defaults
 
 ### complete
 echo "Configuration complete , Please restart your phone!!!"

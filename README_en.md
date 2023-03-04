@@ -18,7 +18,7 @@
 **Foreword:**
 
 **Special Note:**
-The Android system used in the installation solution in this tutorial is best to choose a version between Android 5 and Android 9. Systems lower than Android 5 need to use a lower version of linuxdeploy, and systems higher than Android 9 may have permission-related compatibility issues. In addition, if openssh fails to start automatically (shown as unable to use ssh to connect to the debian system), this situation is generally a compatibility problem between the Android kernel and linuxdeploy, and you need to replace the Android system with a different kernel version (note that it is a different kernel version).
+The Android used in the installation solution in this tutorial is best to choose a version between Android 5 and Android 9. Operating system lower than Android 5 need to use a lower version of linuxdeploy, and  operating system higher than Android 9 may have permission-related compatibility issues. In addition, if openssh fails to start automatically (shown as unable to use ssh to connect to the debian), this situation is generally a compatibility problem between the Android kernel and linuxdeploy, and you need to replace the Android system with a different kernel version (note that it is a different kernel version).
 
 0. Although the steps in this tutorial are as comprehensive and detailed as possible, 
    it is not suitable for complete novice users because it involves basic linux usage and klipper configuration.

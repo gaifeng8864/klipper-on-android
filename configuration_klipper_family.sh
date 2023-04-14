@@ -47,6 +47,7 @@ sudo tee "$POWERFIX" <<EOF
 #!/bin/bash
 sudo unchroot dumpsys battery set status 2
 sudo unchroot dumpsys battery set level 98
+sudo unchroot dempsys dumpsys deviceidle disable
 sudo unchroot iw wlan0 set power_save off 
 EOF
 sudo chmod +x "$POWERFIX"

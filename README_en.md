@@ -269,7 +269,7 @@ Replace ttyACM0 in configuration_klipper_family.sh with the recognized device na
 
 Then re-execute:
 
-      bash configuration_klipper_family.sh
+	bash configuration_klipper_family.sh -p "recognized device name"
 
 
 I wish you every success in 3D printing! ! !

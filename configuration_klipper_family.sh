@@ -1,5 +1,15 @@
 #!/bin/bash
 
+serial_port="/dev/ttyACM0"
+while getopts p: flag
+do
+    case "${flag}" in
+        p) serial_port=${OPTARG};;
+    esac
+done
+
+echo "Using serial port ${serial_port}"
+
 if [ "$(id  -u)" = "0" ]
 then
   echo "Start script as user!"
@@ -12,7 +22,7 @@ then
   exit 1
 fi
 
-if [ ! -c "/dev/ttyACM0" ] 
+if [ ! -c "$serial_port" ] 
 then
   echo "Please connect your phone to the printer "
   exit 1
@@ -89,7 +99,7 @@ sudo tee "$TTYFIX" <<EOF
 inotifywait -m /dev -e create |
   while read dir action file
   do
-    [ "\$file" = "ttyACM0" ] && chmod 777 /dev/ttyACM0
+    [ "\$file" = "ttyACM0" ] && chmod 777 $serial_port
   done
 EOF
 sudo chmod +x "$TTYFIX"
@@ -194,7 +204,7 @@ PIDFILE=/var/run/klipper.pid
 [ -r \$DEFAULTS_FILE ] && . \$DEFAULTS_FILE
 
 case "\$1" in
-start)  chmod 777 /dev/ttyACM0
+start)  chmod 777 $serial_port
         log_daemon_msg "Starting" \$NAME
         start-stop-daemon --start --quiet --exec \$KLIPPY_EXEC \\
 		                  --background --pidfile \$PIDFILE --make-pidfile \\

@@ -301,12 +301,9 @@ ssh登录进入debian系统后执行以下命令：
 
      ls -al /dev/
 
-使用识别的设备名称替换 configuration_klipper_family.sh 内的 ttyACM0
+使用识别的设备名称执行： 
 
-
-然后重新执行： 
-
-	bash configuration_klipper_family.sh
+	bash configuration_klipper_family.sh -p "识别的设备名称"
 
 
 祝大家每一次3D打印都能成功！！！

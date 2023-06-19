@@ -137,7 +137,7 @@ Distribution (Debian)
 
 Architecture (armhf) (Check your mobile phone processor model by yourself, if it supports 64 bits, choose arm64)
 
-Distribution suite (stable)
+Distribution suite (oldstable)
 
 Installation type (Directory)
 

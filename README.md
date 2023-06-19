@@ -164,7 +164,7 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 
 	架构（armhf）（自行查询自己手机处理器型号，如果支持64位就选arm64）
 
-	发行版本 （stable）
+	发行版本 （oldstable）
 
 	源地址 （ http://ftp.cn.debian.org/debian/ ）（国内源安装更快）
 

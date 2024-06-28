@@ -232,9 +232,6 @@ sudo update-rc.d klipper defaults
 sudo update-rc.d moonraker defaults 
 sudo update-rc.d powerfix defaults
 
-### Add read and write permissions for user print3D to ${serial_port} (default is ttyACM0)
-sudo usermod -a -G aid_radio print3D
-
 ### complete
 echo "Configuration complete , Please restart your phone!!!"
 

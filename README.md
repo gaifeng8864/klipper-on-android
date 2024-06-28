@@ -224,6 +224,27 @@ ssh登录进入debian系统后执行以下命令：
 
 ###由于安卓系统上chroot容器权限问题，除初始登录用户外，默认其他用户没有网络权限，包括root用户。此命令可以解决使用sudo命令时root用户无法联网的问题。
 
+        sudo usermod -a -G aid_radio print3D
+
+###抛弃了之前使用脚本获取串口（默认为ttyACM0）权限的方式。
+改为将用户 print3D 添加到 aid_radio 用户组（ttyACM0就在这个组里）中，使得 print3D 用户可以享有 aid_radio 组的权限。
+使用如下命令：
+
+sudo usermod -a -G aid_radio print3D
+
+因为我发现使用脚本获取权限的方式存在很大延迟，并且存在干扰klipper里“通过SD卡更新控制板固件”功能。
+
+如果你不确定在你的设备上串口设备ttyACM0是否在aid_radio组中，运行以下命令：
+
+ls -al /dev/ttyACM0
+
+输出信息一般像这样：
+
+crw-rw----. 1 aid_radio aid_radio 166, 0  4月  1 00:00 /dev/ttyACM0
+
+aid_radio 就是串口设备所在的组。
+
+
 	sudo apt update
 
 ###更新系统软件包

@@ -41,9 +41,6 @@ ETC_INIT_MOONRAKER=/etc/init.d/moonraker
 
 USR_LOCAL_BIN_XTERM=/usr/local/bin/xterm
 
-TTYFIX="/usr/bin/ttyfix"
-TTYFIX_START="/etc/init.d/ttyfix"
-
 POWERFIX="/usr/bin/powerfix"
 POWERFIX_START="/etc/init.d/powerfix"
 
@@ -58,7 +55,7 @@ sudo tee "$POWERFIX" <<EOF
 sudo unchroot dumpsys battery set status 2
 sudo unchroot dumpsys battery set level 98
 sudo unchroot dumpsys deviceidle disable >/dev/null 2>&1
-sudo unchroot iw wlan0 set power_save off
+sudo iw wlan0 set power_save off
 EOF
 sudo chmod +x "$POWERFIX"
 
@@ -91,71 +88,6 @@ sleep 10
 /home/$KLIPPER_USER/.KlipperScreen-env/bin/python /home/$KLIPPER_USER/KlipperScreen/screen.py -c \$KLIPPERSCREEN_CONFIG -l \$KLIPPERSCREEN_LOG
 EOF
 sudo chmod +x $USR_LOCAL_BIN_XTERM
-
-### Configuration for ttyACM0
-sudo tee "$TTYFIX" <<EOF
-#!/bin/bash
-
-inotifywait -m /dev -e create |
-  while read dir action file
-  do
-    [ "\$file" = "ttyACM0" ] && chmod 777 $serial_port
-  done
-EOF
-sudo chmod +x "$TTYFIX"
-
-sudo tee "$TTYFIX_START" <<EOF
-#!/bin/sh
-### BEGIN INIT INFO
-# Provides:          ttyfix
-# Default-Start:        2 3 4 5
-# Default-Stop:
-# Required-Start:    \$local_fs \$remote_fs
-# Short-Description: ttyfix
-# Description: ttyfix
-### END INIT INFO
-
-. /lib/lsb/init-functions
-
-N="$TTYFIX_START"
-PIDFILE=/run/ttyfix.pid
-EXEC="$TTYFIX"
-
-set -e
-
-f_start ()
-{
-  start-stop-daemon --start --background --make-pidfile --pidfile \$PIDFILE --exec \$EXEC
-}
-
-f_stop ()
-{
-  start-stop-daemon --stop --pidfile \$PIDFILE
-}
-
-case "\$1" in
-  start)
-        f_start
-        ;;
-  stop)
-        f_stop
-        ;;
-  restart)
-        f_stop
-        sleep 1
-        f_start
-        ;;
-  reload|force-reload|status)
-        ;;
-  *)
-        echo "Usage: \$N {start|stop|restart|force-reload|status}" >&2
-        exit 1
-        ;;
-esac
-
-exit 0
-EOF
-sudo chmod +x "$TTYFIX_START"
 
 ### Configuration for /etc/init.d/klipper
 sudo tee "$ETC_DEFAULT_KLIPPER" <<EOF
@@ -204,8 +136,7 @@ PIDFILE=/var/run/klipper.pid
 [ -r \$DEFAULTS_FILE ] && . \$DEFAULTS_FILE
 
 case "\$1" in
-start)  chmod 777 $serial_port
-        log_daemon_msg "Starting" \$NAME
+start)  log_daemon_msg "Starting" \$NAME
         start-stop-daemon --start --quiet --exec \$KLIPPY_EXEC \\
 		                  --background --pidfile \$PIDFILE --make-pidfile \\
 		                  --chuid $KLIPPER_USER --user $KLIPPER_USER \\
@@ -296,11 +227,13 @@ exit 0
 EOF
 sudo chmod +x $ETC_INIT_MOONRAKER
 
-### Configure autostart service
-sudo update-rc.d ttyfix defaults 
+### Configure autostart service 
 sudo update-rc.d klipper defaults 
 sudo update-rc.d moonraker defaults 
 sudo update-rc.d powerfix defaults
+
+### Add read and write permissions for user print3D to ${serial_port} (default is ttyACM0)
+sudo usermod -a -G aid_radio print3D
 
 ### complete
 echo "Configuration complete , Please restart your phone!!!"

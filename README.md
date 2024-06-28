@@ -228,9 +228,6 @@ ssh登录进入debian系统后执行以下命令：
 
 ###抛弃了之前使用脚本获取串口（默认为ttyACM0）权限的方式。
 改为将用户 print3D 添加到 aid_radio 用户组（ttyACM0就在这个组里）中，使得 print3D 用户可以享有 aid_radio 组的权限。
-使用如下命令：
-
-sudo usermod -a -G aid_radio print3D
 
 因为我发现使用脚本获取权限的方式存在很大延迟，并且存在干扰klipper里“通过SD卡更新控制板固件”功能。
 

@@ -224,7 +224,9 @@ ssh登录进入debian系统后执行以下命令：
 
 ###由于安卓系统上chroot容器权限问题，除初始登录用户外，默认其他用户没有网络权限，包括root用户。此命令可以解决使用sudo命令时root用户无法联网的问题。
 
-        sudo usermod -a -G aid_radio print3D
+
+
+	sudo usermod -a -G aid_radio print3D
 
 ###抛弃了之前使用脚本获取串口（默认为ttyACM0）权限的方式。
 改为将用户 print3D 添加到 aid_radio 用户组（ttyACM0就在这个组里）中，使得 print3D 用户可以享有 aid_radio 组的权限。
@@ -233,22 +235,27 @@ ssh登录进入debian系统后执行以下命令：
 
 如果你不确定在你的设备上串口设备ttyACM0是否在aid_radio组中，运行以下命令：
 
-ls -al /dev/ttyACM0
+	ls -al /dev/ttyACM0
 
 输出信息一般像这样：
 
-crw-rw----. 1 aid_radio aid_radio 166, 0  4月  1 00:00 /dev/ttyACM0
+	crw-rw----. 1 aid_radio aid_radio 166, 0  4月  1 00:00 /dev/ttyACM0
 
 aid_radio 就是串口设备所在的组。
+
 
 
 	sudo apt update
 
 ###更新系统软件包
 
+
+
 	sudo apt install -y git vim wget
 
 ###安装必要的工具软件
+
+
 
 ## 5.使用kiauh安装klipper ##
 
@@ -256,21 +263,31 @@ aid_radio 就是串口设备所在的组。
 
 ###进入登录用户家目录
 
+
+
 	git clone https://github.com/th33xitus/kiauh.git
 
 ###官方kiauh脚本地址
+
+
 
 	git clone https://gitee.com/miroky/kiauh.git
 
 ###国内kiauh脚本地址（与上面官方地址二选一即可）
 
+
+
 	./kiauh/kiauh.sh
 	
 ###启动脚本开始安装klipper全家桶
 
-###需要安装klipper，moonraker，fluidd（一键脚本暂时不支持Mainsail配置），KlipperScreen 这4个组件。
+
+
+###共需要安装klipper，moonraker，fluidd（一键脚本暂时不支持Mainsail配置），KlipperScreen 这4个组件。
 每安装完一个组件都会提示无法启动服务，这是安卓初始化系统与klipper全家桶服务启动方式不兼容的原因，不用管它，如果能启动起来就不用一键脚本去配置了。
 组件安装涉及部分编译过程，耗时较长，耐心等待。只要是每个脚本都能自动安装到最后，基本就没有问题。
+
+
 
 ## 6.klipper全家桶配置 ##
 

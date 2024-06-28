@@ -187,6 +187,19 @@ After logging in to the debian with ssh, execute the following command:
 
 ###Because of the chroot container permission problem on the Android , except for the initial login user, other users have no network permission by default, including the root user. This command can solve the problem that the root user cannot connect to the Internet when using the sudo command.
 
+      sudo usermod -a -G aid_radio print3D
+###Abandon the previous method of using scripts to obtain serial port permissions (default is ttyACM0). Instead, add user print3D to the aid_radio user group (ttyACM0 is in this group), so that the print3D user can enjoy the permissions of the aid_radio group.
+
+Because I found that the method of using scripts to obtain permissions has a large delay and interferes with the "Update control board firmware via SD card" function in klipper.
+
+If you are not sure whether the serial port device ttyACM0 on your device is in the aid_radio group, run the following command:
+
+	  ls -al /dev/ttyACM0
+The output information is generally like this:
+
+	  crw-rw----. 1 aid_radio aid_radio 166, 0 April 1 00:00 /dev/ttyACM0
+aid_radio is the group where the serial port device is located.
+
       sudo apt update
 
 ###Update packages

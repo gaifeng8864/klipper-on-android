@@ -39,13 +39,13 @@ YOUTUBE：
 **前言：**
 
 **特别说明：**
-本教程里的安装方案使用的安卓系统最好选择安卓5到安卓9之间的版本。低于安卓5系统需要使用低版本linuxdeploy，高于安卓9系统可能会有权限相关的兼容性问题。另外，如果遇到openssh自动启动失败（表现为无法使用ssh连接debian系统），这种情况一般是安卓内核与linuxdeploy兼容问题，需要更换不同内核版本的安卓系统（注意，是不同内核版本）。
+本教程里的安装方案使用的安卓系统最好选择安卓5或以上版本，低于安卓5系统需要使用低版本linuxdeploy。高于安卓9系统可能会有权限相关的兼容性问题，但是并不都这样，仍然值得一试。另外，如果遇到openssh自动启动失败（表现为无法使用ssh连接debian系统），这种情况一般是安卓内核与linuxdeploy兼容问题，需要更换不同内核版本的安卓系统（注意，是不同内核版本）。推荐使用AOSP等类原生安卓系统。
 
 0.本教程虽尽量做到步骤全面和详细，但是因为涉及基本的linux系统使用和klipper配置，所以并不适合完全小白用户。不过，都已经准备使用安卓手机运行klipper了，相信这些已经不是问题。
 
 1.本教程中安卓系统必须root。因每种手机硬件和系统的root方法各有不同，网络上教程很多，这里不再赘述。
 
-2.本教程软硬件环境：
+2.本教程示例软硬件环境：
 
   小米2S手机
   
@@ -104,7 +104,7 @@ XServer-XSDL-1.20.51.apk（必装） 下载链接：https://sourceforge.net/proj
     
 linuxdeploy-2.6.0-259.apk（必装） 下载链接：https://github.com/meefik/linuxdeploy/releases/download/2.6.0/linuxdeploy-2.6.0-259.apk
 
-kerneladiutor_248.apk（开启所有CPU核心，推荐安装） 下载链接：https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
+kerneladiutor_248.apk（开启所有CPU核心。如果linuxdeploy里的Debian系统无法识别到所有的CPU核心，推荐安装） 下载链接：https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
 
 termux_118.apk（选装，需要时再安装）下载链接：https://github.com/termux/termux-app/releases/tag/v0.118.0
 		
@@ -130,6 +130,7 @@ XServer-XSDL安装比较简单，按系统提示直接下一步就可以了。
 高通处理器默认有个MPD功耗控制方案，默认情况下会关闭部分CPU核心来控制功耗。
 由此带来的最大的问题就是在debian系统里会发现4核心的处理器大多数情况下却只识别出2个核心。
 kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整CPU和GPU的频率和性能。可以强制开启所有CPU核心，充分利用手机的性能。
+经实际测试发现，较新的安卓手机已可以被linuxdeploy里安装的debian自动识别到所有的CPU核心。所以，推荐初始不安装，如果需要再安装。
 
 ## 2.安装linuxdeploy ##
 
@@ -226,25 +227,6 @@ ssh登录进入debian系统后执行以下命令：
 
 
 
-	sudo usermod -a -G aid_radio print3D
-
-###抛弃了之前使用脚本获取串口（默认为ttyACM0）权限的方式。
-改为将用户 print3D 添加到 aid_radio 用户组（ttyACM0就在这个组里）中，使得 print3D 用户可以享有 aid_radio 组的权限。
-
-因为我发现使用脚本获取权限的方式存在很大延迟，并且存在干扰klipper里“通过SD卡更新控制板固件”功能。
-
-如果你不确定在你的设备上串口设备ttyACM0是否在aid_radio组中，运行以下命令：
-
-	ls -al /dev/ttyACM0
-
-输出信息一般像这样：
-
-	crw-rw----. 1 aid_radio aid_radio 166, 0  4月  1 00:00 /dev/ttyACM0
-
-aid_radio 就是串口设备所在的组。
-
-
-
 	sudo apt update
 
 ###更新系统软件包
@@ -316,9 +298,31 @@ aid_radio 就是串口设备所在的组。
 ***注意：*** printer.cfg 这个配置文件需要根据自己的打印机控制主板型号进行参数更改。具体请参考各主板配置说明。
 
 
-***！！！！！！将打印机主板上电启动，使用OTG线将手机和打印机主板连接！！！！！！***
+***！！！！！！将打印机主板上电启动，使用 OTG线将手机和打印机主板连接！！！！！！***
 
-回到debian系统内执行如下命令：
+运行以下命令，查找打印机主板在安卓手机里被识别到的串口设备路径与所在的用户组：
+
+	ls -al /dev/
+
+
+输出信息一般像这样：
+
+	crw-rw----.  1 aid_radio     aid_radio        166,   0  6月 29 11:57 ttyACM0
+
+
+在以上的输出信息中，第二个 aid_radio 就是串口设备所在的用户组，ttyACM0 就是串口设备的名称。完整的串口设备路径就是 /dev/ttyACM0
+
+***注意！！！*** 不同的打印机主板在不同的安卓手机里的名称和用户组可能是有区别的，请注意仔细确认！！！
+
+
+确认设备所在的用户组后，运行以下命令将用户 print3D 添加到串口设备所在的用户组里，使得用户 print3D 获得对串口设备的读写权限。
+
+### 此处抛弃了之前使用脚本获取串口设备权限的方式。因为我发现使用脚本获取权限的方式存在很大延迟，并且可能存在干扰“[通过SD卡更新控制板固件](https://www.klipper3d.org/zh/SDCard_Updates.html) ”的问题。
+
+ 	sudo usermod -a -G aid_radio print3D
+
+
+继续执行如下命令：
 
  	cd ~
 
@@ -327,22 +331,51 @@ aid_radio 就是串口设备所在的组。
 	sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family.sh
 
 	bash configuration_klipper_family.sh
+ 
+
+ ***注意！！！*** 如果你的串口设备路径不是默认的 /dev/ttyACM0
+
+请执行以下命令： 
+
+	bash configuration_klipper_family.sh -p "识别到的串口设备路径"
+ 
 
 执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
 
 
-***注意：*** 如果手机硬件已正确连接到打印机控制主板，但是运行脚本时依旧提示 " **Please connect your phone to the printer** "。
-     debian系统内执行以下命令查看设备识别状态：
-
-     ls -al /dev/
-
-使用识别的设备名称执行： 
-
-	bash configuration_klipper_family.sh -p "识别的设备名称"
-
-
 祝大家每一次3D打印都能成功！！！
 
+***小技巧!!!***
+
+如果不好确认串口设备的名称，可以使用以下方法：
+
+1.将打印机主板与安卓手机断开连接，重启手机，进入debian内，运行以下命令并保存输出结果：
+
+ls /dev/
+
+2.将打印机主板与安卓手机连接，重启手机，进入debian内，运行以下命令并保存输出结果：
+
+ls /dev/
+
+3.将步骤1和步骤2的结果进行比较，可以很容易地确认设备是否被正确识别以及设备名称。
+
+也可以使用以下命令来确认设备是否被正确连接到安卓手机：
+
+dmesg | grep usb 
+
+或
+
+dmesg | grep acm
+
+或
+
+dmesg | grep 打印机控制板的CPU型号
+
+或
+
+dmesg | grep klipper
+
+仔细查找以上命令的输出信息，以找到正确的串口设备名称。
 
 
 **备注：**

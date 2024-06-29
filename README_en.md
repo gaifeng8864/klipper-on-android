@@ -263,7 +263,7 @@ Note! ! ! Different printer motherboards may have different names and user group
 
 After confirming the user group of the device, run the following command to add user print3D to the user group of the serial device, so that user print3D obtains read and write permissions to the serial device.
 
-Here, the previous method of using scripts to obtain serial device permissions is abandoned. Because I found that there is a big delay in using the script to obtain permissions, and there may be problems with "updating the control board firmware through the SD card".
+Here, the previous method of using scripts to obtain serial device permissions is abandoned. Because I found that there is a big delay in using the script to obtain permissions, and there may be problems with "[SDCard updates](https://www.klipper3d.org/SDCard_Updates.html)".
 
 	sudo usermod -a -G aid_radio print3D
 

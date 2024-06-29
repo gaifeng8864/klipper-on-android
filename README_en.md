@@ -18,7 +18,7 @@
 **Foreword:**
 
 **Special Note:**
-The Android used in the installation solution in this tutorial is best to choose a version between Android 5 and Android 9. Operating system lower than Android 5 need to use a lower version of linuxdeploy, and  operating system higher than Android 9 may have permission-related compatibility issues. In addition, if openssh fails to start automatically (shown as unable to use ssh to connect to the debian), this situation is generally a compatibility problem between the Android kernel and linuxdeploy, and you need to replace the Android system with a different kernel version (note that it is a different kernel version).
+The installation scheme in this tutorial uses Android 5 or above. If the system is lower than Android 5, you need to use a lower version of linuxdeploy. There may be compatibility issues related to permissions for systems higher than Android 9, but this is not always the case. It is still worth a try. In addition, if openssh fails to start automatically (as shown by being unable to use ssh to connect to the debian system), this is generally a compatibility issue between the Android kernel and linuxdeploy. You need to change to an Android system with a different kernel version (note, a different kernel version). It is recommended to use AOSP or other native Android systems.
 
 0. Although the steps in this tutorial are as comprehensive and detailed as possible, 
    it is not suitable for complete novice users because it involves basic linux usage and klipper configuration.
@@ -83,7 +83,7 @@ XServer-XSDL-1.20.51.apk (required) Download link: https://sourceforge.net/proje
     
 linuxdeploy-2.6.0-259.apk (required) Download link: https://github.com/meefik/linuxdeploy/releases/download/2.6.0/linuxdeploy-2.6.0-259.apk
 
-kerneladiutor_248.apk (open all CPU cores, recommended installation) Download link: https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
+kerneladiutor_248.apk (Enable all CPU cores. If the Debian system in linuxdeploy cannot recognize all CPU cores, it is recommended to install) Download link: https://f-droid.org/en/packages/com.nhellfire.kerneladiutor/
 
 termux_118.apk (optional, install when needed) download link: https://github.com/termux/termux-app/releases/tag/v0.118.0
 
@@ -105,7 +105,7 @@ If you miss the interface for the first startup, just close XServer-XSDL running
 
 Qualcomm processors have an MPD power consumption control scheme by default. By default, some CPU cores are turned off to control power consumption.
 The biggest problem caused by this is that in the debian , it will be found that the processor with 4 cores only recognizes 2 cores in most cases.
-kerneladiutor is a simple and easy-to-use Android kernel management software, used to adjust the frequency and performance of CPU and GPU. All CPU cores can be forcibly turned on to make full use of the performance of the phone.
+kerneladiutor is a simple and easy-to-use Android kernel management software, used to adjust the frequency and performance of CPU and GPU. All CPU cores can be forcibly turned on to make full use of the performance of the phone.After actual testing, it was found that newer Android phones can be automatically recognized by Debian installed in LinuxDeploy for all CPU cores. Therefore, it is recommended not to install it initially, and install it later if necessary.
 
 ## 2. Install linuxdeploy ##
 
@@ -187,19 +187,6 @@ After logging in to the debian with ssh, execute the following command:
 
 ###Because of the chroot container permission problem on the Android , except for the initial login user, other users have no network permission by default, including the root user. This command can solve the problem that the root user cannot connect to the Internet when using the sudo command.
 
-      sudo usermod -a -G aid_radio print3D
-###Abandon the previous method of using scripts to obtain serial port permissions (default is ttyACM0). Instead, add user print3D to the aid_radio user group (ttyACM0 is in this group), so that the print3D user can enjoy the permissions of the aid_radio group.
-
-Because I found that the method of using scripts to obtain permissions has a large delay and interferes with the "Update control board firmware via SD card" function in klipper.
-
-If you are not sure whether the serial port device ttyACM0 on your device is in the aid_radio group, run the following command:
-
-	  ls -al /dev/ttyACM0
-The output information is generally like this:
-
-	  crw-rw----. 1 aid_radio aid_radio 166, 0 April 1 00:00 /dev/ttyACM0
-aid_radio is the group where the serial port device is located.
-
       sudo apt update
 
 ###Update packages
@@ -212,19 +199,18 @@ aid_radio is the group where the serial port device is located.
 
       cd ~
 
-### Enter the login user's home directory
+###Enter the login user's home directory
+
 
       git clone https://github.com/th33xitus/kiauh.git
 
 ###Official kiauh script address
 
-      git clone https://gitee.com/miroky/kiauh.git
-
-###Domestic kiauh script address (choose one from the official address above)
 
       ./kiauh/kiauh.sh
 
 ###Start the script to start installing the klipper family bucket
+
 
 ### Need to install klipper, moonraker, fluidd (one-click script does not support Mainsail configuration), KlipperScreen these 4 components.
 Every time a component is installed, it will prompt that the service cannot be started. This is the reason why the Android initialization system is not compatible with the klipper family bucket service startup method. Don’t worry about it. If it can be started, there is no need to configure it with a one-click script.
@@ -235,10 +221,12 @@ Component installation involves part of the compilation process, which takes a l
 Use Xftp or the command line to enter the following path:
 
       /home/print3D/printer_data/config/
+      
 
 Backup the fluidd.cfg, moonraker.conf, printer.cfg inside and delete the original files.
 
       cd ~
+      
 
 ### Enter the login user's home directory
 
@@ -253,36 +241,82 @@ Or if you want to save trouble, execute the following command directly:
       sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/moonraker.conf
 
       sudo wget -P /home/print3D/printer_data/config/ https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/printer.cfg
+      
 
 ***Note:*** printer.cfg This configuration file needs to be changed according to the model of the printer control board. For details, please refer to the configuration instructions of each motherboard.
 
 
-***! ! ! ! ! ! Power on the main board of the printer, and connect the mobile phone and the main board of the printer with an OTG cable! ! ! ! ! ! ***
 
-Go back to the debian and execute the following command:
+***! ! ! ! ! ! Power on the main board of the printer, and connect the mobile phone and the main board of the printer with an OTG cable! ! ! ! ! !***
 
-      cd ~
+Run the following command to find the serial device path and user group of the printer motherboard identified in the Android phone:
 
-### Enter the login user's home directory
+	ls -al /dev/
 
-      sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family.sh
+The output information is generally like this:
 
-      bash configuration_klipper_family.sh
+	crw-rw----. 1 aid_radio aid_radio 166, 0 6 29 11:57 ttyACM0
 
-After the execution is complete, restart the mobile phone. If there is no problem, the klipper family bucket and XServer-XSDL will automatically start and connect to the printer, and the KlipperScreen classic interface will be displayed on the screen.
+In the above output information, the second aid_radio is the user group of the serial device, and ttyACM0 is the name of the serial device. The complete serial device path is /dev/ttyACM0
+
+Note! ! ! Different printer motherboards may have different names and user groups in different Android phones, please confirm carefully! ! !
+
+After confirming the user group of the device, run the following command to add user print3D to the user group of the serial device, so that user print3D obtains read and write permissions to the serial device.
+
+Here, the previous method of using scripts to obtain serial device permissions is abandoned. Because I found that there is a big delay in using the script to obtain permissions, and there may be problems with "updating the control board firmware through the SD card".
+
+	sudo usermod -a -G aid_radio print3D
+
+Continue to execute the following command:
+
+	cd ~
+
+###Enter the login user's home directory
+
+	sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family.sh
+
+	bash configuration_klipper_family.sh
+
+Note! ! ! If your serial port device path is not the default /dev/ttyACM0
+
+Please execute the following command:
+
+	bash configuration_klipper_family.sh -p "identified serial port device path"
+
+After the execution is completed, restart the phone. If there is no problem, the klipper family bucket and XServer-XSDL will automatically start and connect to the printer, and the KlipperScreen classic interface will be displayed on the screen.
 
 
-***Note:*** If the mobile phone hardware has been correctly connected to the printer control board, but the prompt " **Please connect your phone to the printer** " is still displayed when running the script.
-     Execute the following command in the debian to view the device identification status:
+Tips!!!
 
-      ls -al /dev/
+If it is difficult to confirm the name of the serial device, you can use the following method:
 
-Replace ttyACM0 in configuration_klipper_family.sh with the recognized device name
+1. Disconnect the printer motherboard from the Android phone, restart the phone, enter debian, run the following command and save the output:
 
+	ls -a /dev/
 
-Then re-execute:
+2. Connect the printer motherboard to the Android phone, restart the phone, enter debian, run the following command and save the output:
 
-	bash configuration_klipper_family.sh -p "recognized device name"
+	ls -a /dev/
+
+3. Compare the results of step 1 and step 2 to easily confirm whether the device is correctly identified and the device name.
+
+You can also use the following command to confirm whether the device is correctly connected to the Android phone:
+
+	dmesg | grep usb
+
+or
+
+	dmesg | grep acm
+
+or
+
+	dmesg | grep CPU model of the printer control board
+
+or
+
+	dmesg | grep klipper
+
+Carefully look for the output information of the above command to find the correct serial device name.
 
 
 I wish you every success in 3D printing! ! !

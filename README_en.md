@@ -310,7 +310,7 @@ or
 
 or
 
-	dmesg | grep CPU model of the printer control board
+	dmesg | grep <CPU model of the printer control board>
 
 or
 

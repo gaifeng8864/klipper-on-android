@@ -56,6 +56,9 @@ sudo unchroot dumpsys battery set status 2
 sudo unchroot dumpsys battery set level 98
 sudo unchroot dumpsys deviceidle disable >/dev/null 2>&1
 sudo iw wlan0 set power_save off
+sudo unchroot settings put global auto_time 0
+sleep 1
+sudo unchroot settings put global auto_time 1
 EOF
 sudo chmod +x "$POWERFIX"
 

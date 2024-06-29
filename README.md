@@ -138,7 +138,7 @@ kerneladiutor是简单好用的安卓系统的内核管理软件，用来调整C
 根据系统提示安装apk文件，安装完成后打开软件点击主界面左上角“![三横杠](https://user-images.githubusercontent.com/16047447/201450191-fc8d09bc-7ae5-4e9a-97a2-a92c5fdf36c2.PNG)
 ”打开软件设置：
 
-	屏幕常亮  （勾选）
+	屏幕常亮  （不勾选）
 	
 	锁定Wi-Fi （勾选）
 

@@ -369,7 +369,7 @@ ssh登录进入debian系统后执行以下命令：
 
 或
 
-	dmesg | grep 打印机控制板的CPU型号
+	dmesg | grep <打印机控制板的CPU型号>
 
 或
 

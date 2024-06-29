@@ -290,15 +290,15 @@ Tips!!!
 
 If it is difficult to confirm the name of the serial device, you can use the following method:
 
-1. Disconnect the printer motherboard from the Android phone, restart the phone, enter debian, run the following command and save the output:
+1.Disconnect the printer motherboard from the Android phone, restart the phone, enter debian, run the following command and save the output:
 
 	ls -a /dev/
 
-2. Connect the printer motherboard to the Android phone, restart the phone, enter debian, run the following command and save the output:
+2.Connect the printer motherboard to the Android phone, restart the phone, enter debian, run the following command and save the output:
 
 	ls -a /dev/
 
-3. Compare the results of step 1 and step 2 to easily confirm whether the device is correctly identified and the device name.
+3.Compare the results of step 1 and step 2 to easily confirm whether the device is correctly identified and the device name.
 
 You can also use the following command to confirm whether the device is correctly connected to the Android phone:
 

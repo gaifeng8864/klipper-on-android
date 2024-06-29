@@ -351,29 +351,29 @@ ssh登录进入debian系统后执行以下命令：
 
 1.将打印机主板与安卓手机断开连接，重启手机，进入debian内，运行以下命令并保存输出结果：
 
-ls /dev/
+	ls /dev/
 
 2.将打印机主板与安卓手机连接，重启手机，进入debian内，运行以下命令并保存输出结果：
 
-ls /dev/
+	ls /dev/
 
 3.将步骤1和步骤2的结果进行比较，可以很容易地确认设备是否被正确识别以及设备名称。
 
 也可以使用以下命令来确认设备是否被正确连接到安卓手机：
 
-dmesg | grep usb 
+	dmesg | grep usb 
 
 或
 
-dmesg | grep acm
+	dmesg | grep acm
 
 或
 
-dmesg | grep 打印机控制板的CPU型号
+	dmesg | grep 打印机控制板的CPU型号
 
 或
 
-dmesg | grep klipper
+	dmesg | grep klipper
 
 仔细查找以上命令的输出信息，以找到正确的串口设备名称。
 

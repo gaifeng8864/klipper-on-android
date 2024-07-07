@@ -259,11 +259,15 @@ The output information is generally like this:
 
 In the above output information, the second aid_radio is the user group of the serial device, and ttyACM0 is the name of the serial device. The complete serial device path is /dev/ttyACM0
 
-Note! ! ! Different printer motherboards may have different names and user groups in different Android phones, please confirm carefully! ! !
+***Note! ! ! Different printer motherboards may have different names and user groups in different Android phones, please confirm carefully! ! !***
 
-After confirming the user group of the device, run the following command to add user print3D to the user group of the serial device, so that user print3D obtains read and write permissions to the serial device.
+***If the information output after running the command " ls -al /dev/ " is similar to the following:***
 
-Here, the previous method of using scripts to obtain serial device permissions is abandoned. Because I found that there is a big delay in using the script to obtain permissions, and there may be problems with "[SDCard updates](https://www.klipper3d.org/SDCard_Updates.html)".
+	crw-rw----. 1 root root 166, 0 6 29 11:57 ttyACM0
+
+***This means that " ttyACM0 " belongs to the root user group. The following operations in step 6 will no longer apply. Please jump directly to step 7. What to do if " ttyACM0 " belongs to the root user group***
+
+If ttyACM0 is confirmed to belong to the non-root user group, run the following command to add user print3D to the user group of the serial device, so that user print3D obtains read and write permissions to the serial device.
 
 	sudo usermod -a -G aid_radio print3D
 
@@ -277,7 +281,7 @@ Continue to execute the following command:
 
 	bash configuration_klipper_family.sh
 
-Note! ! ! If your serial port device path is not the default /dev/ttyACM0
+***Note! ! ! If your serial port device path is not the default /dev/ttyACM0***
 
 Please execute the following command:
 
@@ -285,8 +289,28 @@ Please execute the following command:
 
 After the execution is completed, restart the phone. If there is no problem, the klipper family bucket and XServer-XSDL will automatically start and connect to the printer, and the KlipperScreen classic interface will be displayed on the screen.
 
+## 7. What to do if " ttyACM0 " belongs to the root user group
 
-Tips!!!
+Execute the following command:
+
+	cd ~
+
+###Enter the home directory of the logged-in user
+
+	sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family_V1.0.sh
+
+	bash configuration_klipper_family_V1.0.sh
+
+***Note! ! ! If your serial port device path is not the default /dev/ttyACM0***
+
+Please execute the following command:
+
+	bash configuration_klipper_family_V1.0.sh -p "identified serial port device path"
+
+After the execution is completed, restart the phone. If there is no problem, the klipper family bucket and XServer-XSDL will automatically start and connect to the printer, and the KlipperScreen classic interface will be displayed on the screen.
+
+
+## Tips!!!
 
 If it is difficult to confirm the name of the serial device, you can use the following method:
 

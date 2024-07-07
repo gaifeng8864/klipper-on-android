@@ -296,6 +296,7 @@ status)
 esac
 exit 0
 EOF
+
 sudo chmod +x $ETC_INIT_MOONRAKER
 
 ### Configure autostart service

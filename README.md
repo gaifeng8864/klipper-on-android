@@ -313,12 +313,17 @@ ssh登录进入debian系统后执行以下命令：
 
 在以上的输出信息中，第二个 aid_radio 就是串口设备所在的用户组，ttyACM0 就是串口设备的名称。完整的串口设备路径就是 /dev/ttyACM0
 
-***注意！！！*** 不同的打印机主板在不同的安卓手机里的名称和用户组可能是有区别的，请注意仔细确认！！！
+***注意！！！不同的打印机主板在不同的安卓手机里的名称和用户组可能是有区别的，请注意仔细确认！！！***
+
+***如果运行命令 ls -al /dev/ 之后输出的信息类似以下这样：***
+
+	crw-rw----.  1 root     root        166,   0  6月 29 11:57 ttyACM0
+
+***这意味着 ttyACM0 归属于 root 用户组，步骤6中接下来的操作将不再适用，请直接跳转到步骤  7.如果 ttyACM0 归属于 root 用户组的处理方式***
 
 
-确认设备所在的用户组后，运行以下命令将用户 print3D 添加到串口设备所在的用户组里，使得用户 print3D 获得对串口设备的读写权限。
+如果确认 ttyACM0 归属于非root用户组，运行以下命令将用户 print3D 添加到串口设备所在的用户组里，使得用户 print3D 获得对串口设备的读写权限。
 
-### 此处抛弃了之前使用脚本获取串口设备权限的方式。因为我发现使用脚本获取权限的方式存在很大延迟，并且可能存在干扰“[通过SD卡更新控制板固件](https://www.klipper3d.org/zh/SDCard_Updates.html) ”的问题。
 
  	sudo usermod -a -G aid_radio print3D
 
@@ -342,6 +347,30 @@ ssh登录进入debian系统后执行以下命令：
  
 
 执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
+
+
+## 7.如果 ttyACM0 归属于 root 用户组的处理方式 ##
+
+执行如下命令：
+
+ 	cd ~
+
+###进入登录用户家目录
+
+	sudo wget https://raw.githubusercontent.com/gaifeng8864/klipper-on-android/main/configuration_klipper_family_V1.0.sh
+
+	bash configuration_klipper_family_V1.0.sh
+ 
+
+ ***注意！！！*** 如果你的串口设备路径不是默认的 /dev/ttyACM0
+
+请执行以下命令： 
+
+	bash configuration_klipper_family_V1.0.sh -p "识别到的串口设备路径"
+ 
+
+ 执行完毕后重启手机，没有问题的话klipper全家桶和XServer-XSDL会自动启动并连接到打印机，屏幕上会显示KlipperScreen经典界面。
+
 
 
 
